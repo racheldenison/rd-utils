@@ -1,0 +1,66 @@
+% rd_startup.m
+
+% adds the specified paths in order
+
+% MEGAVISTA PATHS
+%                 '/e/1.3/p1/denison/Code/megavista/vistasoft',...
+%                 '/e/1.3/p1/denison/Code/megavista/mrvista_development', ...
+%                 '/e/1.3/p1/denison/Code/megavista/silverlab_vista_tools', ...
+%                 '/e/1.3/p1/denison/Code/megavista/users/Rachel/LGN_Code', ...
+
+%                 '/e/1.3/p1/denison/Software/fieldtrip-20140805',...
+%                 '/e/1.3/p1/denison/Software/fieldtrip-20130515',...
+%                 '/e/1.3/p1/denison/Software/eeglab13_3_2b',...
+
+% pathsToAdd = {'/e/1.3/p1/denison/Software/eeglab13_3_2b/functions/sigprocfunc',...
+%                 '/e/1.3/p1/denison/Software/fieldtrip-20140805',...
+%                 '/e/1.3/p1/denison/Software/denoise',...
+%                 '/e/1.3/p1/denison/Software/sqdproject3.0beta',...
+%                 '/Applications/Psychtoolbox-3-Psychtoolbox-3-5653716/Psychtoolbox',...    
+%                 '/e/1.3/p1/denison/Code/matlab',...
+%                 '/e/1.3/p1/denison/Projects/Temporal_Attention/MEG_Analysis',...
+%                 };
+
+
+fprintf('Adding path to fieldtrip ...\n\n')
+addpath('/e/1.3/p1/denison/Software/fieldtrip-20170510')
+ft_defaults
+
+fprintf('Adding custom paths ...\n')
+pathsToAdd = {'/e/1.3/p1/denison/Software/eeglab13_3_2b/functions/sigprocfunc',...
+                '/e/1.3/p1/denison/Software/denoise',...
+                '/e/1.3/p1/denison/Software/sqdproject3.0beta',...
+                '/Applications/Psychtoolbox-3-Psychtoolbox-3-5653716/Psychtoolbox',...    
+                '/e/1.3/p1/denison/Code/matlab',...
+                '/e/1.3/p1/denison/Projects/Temporal_Attention/MEG_Analysis',...
+                };
+    
+for iPath = 1:length(pathsToAdd)
+    pathName = pathsToAdd{iPath};
+    
+    % add path
+    addpath(genpath(pathName));
+    
+    % check path
+    p = path;
+    pathAddedOK = strcmp(p(1:length(pathName)), pathName);
+    
+    if pathAddedOK
+        fprintf('\nAdded path: %s\n', pathName)
+    else
+        fprintf('\nProblem adding path: %s\n', pathName)
+    end
+end
+fprintf('\n')
+
+fprintf('Customizing default figure properties ...\n\n')
+set(groot,'defaultFigureColor','w')
+set(groot,'defaultAxesFontSize',16) % 10
+set(groot,'defaultLineLineWidth',2) % 0.5
+set(groot,'defaultErrorbarLineWidth',1) % 0.5
+% get(groot,'factory')
+% set(groot,'defaultFigureColor','factory')
+
+fprintf('Done.\n')
+
+clear all
