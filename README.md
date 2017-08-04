@@ -1,0 +1,3 @@
+# rd-utils
+
+Handy functions
