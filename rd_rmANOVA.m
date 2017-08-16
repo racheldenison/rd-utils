@@ -42,3 +42,10 @@ end
 
 fvals = fvals0(rowIdx);
 pvals = pvals0(rowIdx);
+
+
+%% Another reference:
+% https://stats.stackexchange.com/questions/244667/wilkinson-notation-in-matlab-for-within-subjects-ranova/246119
+% rm = fitrm(t,'Condition1-Condition3~1');
+% r = ranova(rm);
+% multcompare(rm, 'Time', 'ComparisonType', 'dunn-sidak')
