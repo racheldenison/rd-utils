@@ -1,4 +1,10 @@
-function print_pdf(filename)
+function print_pdf(filename, directory)
+
+% function print_pdf(filename, directory)
+
+if nargin>1
+    filename = sprintf('%s/%s',directory,filename);
+end
 
 set(gcf, 'paperunits', 'points')
 pos = get(gcf, 'position');
