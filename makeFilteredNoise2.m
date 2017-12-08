@@ -20,7 +20,8 @@ function filteredNoiseIm = makeFilteredNoise2(imSize, contrast, ...
 %   that the imSize will always determine the size of the visible noise
 %   patch. If we mask with an aperture, the size of the entire image will be
 %   1.3 times larger than if we don't (the aperture is added around the noise patch).
-% filterSpecial (optional): 'cross' will give vertical/horizontal texture
+% filterSpecial (optional): 'cross' will give specified orientation +
+%   orthogonal orientation
 
 %% example inputs
 if nargin==0
