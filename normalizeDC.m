@@ -15,8 +15,9 @@ switch dim
         % data is conditions1 x conditions2 x subjects
         nConds1 = size(data,1);
         nConds2 = size(data,2);
-        subjectMean = mean(mean(data,1),2);
-        grandMean = mean(data(:));
+        subjectMean = nanmean(nanmean(data,1),2);
+%         grandMean = mean(data(:));
+        grandMean = mean(subjectMean(:));
         dc = repmat(grandMean - subjectMean, [nConds1, nConds2, 1]);
         dataNorm = data + dc;
         
