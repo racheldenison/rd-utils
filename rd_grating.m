@@ -41,5 +41,5 @@ sinwav = sin(a*x+b*y+phase);
 grating = .5 + .5*(contrast * sinwav);
 
 %% Show grating
-imshow(grating)
+% imshow(grating)
 
