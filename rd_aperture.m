@@ -1,6 +1,6 @@
-function imout = rd_aperture(im, type, rad, w)
+function [imout, ap] = rd_aperture(im, type, rad, w)
 
-% function imout = rd_aperture(im, type, rad, w)
+% function [imout, ap] = rd_aperture(im, type, rad, w)
 %
 % type is the type of aperture:
 %   'square','gaussian','cosyne','cosyne-ring','radial-sine','radial-sine-ring'
@@ -30,7 +30,7 @@ switch type
         ap(r.^2 < rad^2) = 1;
         
     case 'gaussian'
-        ap = exp(-r.^2/(2*rad^2)); % sigma = rad, rule of thumb ~4 SDs are visible
+        ap = exp(-r.^2/(2*rad^2)); % sigma = rad, ~4 SDs are visible at full contrast
         
     case 'cosyne'
         p = w*2; % period
