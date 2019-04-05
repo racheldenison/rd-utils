@@ -13,6 +13,13 @@ function [imout, ap] = rd_aperture(im, type, rad, w)
 %   frequency of sine wave = 1/(2*w)
 %   for 'radial*', also controls the spatial frequency
 
+%% Check inputs
+if any(strfind(type, 'ring'))
+    if length(rad)~=2
+        rad = [rad 0];
+    end
+end
+
 %% Setup
 sz = size(im);
 
