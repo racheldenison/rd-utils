@@ -35,7 +35,11 @@ end
 for iF = 1:numel(f)
     turnwhite(f(iF))
     figFile = sprintf('%s/%s%s', figDir, prefix, figNames{iF});
-%     print(f(iF), fileType, '-r0', figFile)
-%     export_fig(figFile, fileType, f(iF), '-m2.5'); % '-m2.5'
-    export_fig(figFile, fileType, f(iF), '-m1.5');
+
+    try
+        export_fig(figFile, fileType, f(iF), '-m1.5');
+    catch
+        fprintf('\nSaving figures using print instead ...\n')
+        print(f(iF), '-dpng', '-r0', figFile)
+    end
 end
